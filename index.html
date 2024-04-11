@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aniversário do murilo</title>
+  <link rel="icon" href="https://static.vecteezy.com/system/resources/previews/015/693/008/non_2x/purple-gift-box-as-a-sign-of-christmas-greetings-these-assets-can-be-used-for-design-banners-advertisements-and-so-on-gift-box-illustration-files-free-png.png">
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Poppins");
+
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(90deg, black, purple, black);
+      color: white;
+      height: 100vh;
+    }
+
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="contador"></h1>
+
+  <script>
+    function contadorAteMeiaNoite() {
+      var agora = new Date();
+      var horaAtual = agora.getHours();
+      var minutoAtual = agora.getMinutes();
+      var segundoAtual = agora.getSeconds();
+
+      var horaMeiaNoite = 24 - horaAtual - 1;
+      var minutoMeiaNoite = 59 - minutoAtual;
+      var segundoMeiaNoite = 60 - segundoAtual;
+
+      var contadorElemento = document.getElementById("contador");
+
+      setInterval(function () {
+        segundoMeiaNoite--;
+
+        if (segundoMeiaNoite < 0) {
+          segundoMeiaNoite = 59;
+          minutoMeiaNoite--;
+
+          if (minutoMeiaNoite < 0) {
+            minutoMeiaNoite = 59;
+            horaMeiaNoite--;
+
+            if (horaMeiaNoite < 0) {
+              contadorElemento.textContent = "Parabéns Murilo!!!";
+              clearInterval();
+            }
+          }
+        }
+
+        contadorElemento.textContent = `Faltam ${horaMeiaNoite} horas, ${minutoMeiaNoite} minutos e ${segundoMeiaNoite} segundos para o aniversário do muriloooo`;
+      }, 1000);
+    }
+
+    contadorAteMeiaNoite();
+  </script>
+</body>
+
+</html>
